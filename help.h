@@ -60,6 +60,12 @@
 "        --user-agent 'ua'       Send specified User-Agent as part of HTTP requests\n"
 "        --lavfdopts 'opts'      Options passed to libavformat, e.g. 'probesize:250000,...'\n"
 "        --avdict 'opts'         Options passed to demuxer, e.g., 'rtsp_transport:tcp,...'\n"
+"        --sync-server                    Designate this node as the server\n"
+"        --server-port <server_port>      Synchronization server tcp port\n"
+"        --sync-client                    Designate this node as a client\n"
+"        --server-address <server_ip>     Synchronization server name or ip address\n"
+"        --sync-num-clients <num_clients> Exact number of clients being synchronized where num clients = num nodes - 1\n"
+"        --verbose-sync                   Output Synchronization data\n");
 "\n"
 "For example:\n"
 "\n"
