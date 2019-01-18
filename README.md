@@ -1,9 +1,7 @@
-omxplayer(1) -- Raspberry Pi command line OMX player
+pmxplayer(1) -- SyncedRaspberry Pi command line OMX player
 ====================================================
 
-OMXPlayer is a commandline OMX player for the Raspberry Pi. It was developed as
-a testbed for the XBMC Raspberry PI implementation and is quite handy to use
-standalone. 
+PMXPlayer is a commandline OMX player for the Raspberry Pi based on Popcorn's OMXPlayer but which provides for video synchronization across multiple Pis
 
 ## DOWNLOADING
 
@@ -118,6 +116,8 @@ For example:
     ./omxplayer -p -o hdmi test.mkv
 
 ## KEY BINDINGS
+
+Note: most of the key bindings have been disabled to avoid breaking the synchronization which would happen if one Pi all of sudden decided to fast forward.
 
 Key bindings to control omxplayer while playing:
 

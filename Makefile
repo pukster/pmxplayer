@@ -1,15 +1,71 @@
-CFLAGS=-pipe -mfloat-abi=hard -mcpu=arm1176jzf-s -fomit-frame-pointer -mabi=aapcs-linux -mtune=arm1176jzf-s -mfpu=vfp -Wno-psabi -mno-apcs-stack-check -g -mstructure-size-boundary=32 -mno-sched-prolog
-CFLAGS+=-std=c++0x -D__STDC_CONSTANT_MACROS -D__STDC_LIMIT_MACROS -DTARGET_POSIX -DTARGET_LINUX -fPIC -DPIC -D_REENTRANT -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DHAVE_CMAKE_CONFIG -D__VIDEOCORE4__ -U_FORTIFY_SOURCE -Wall -DHAVE_OMXLIB -DUSE_EXTERNAL_FFMPEG  -DHAVE_LIBAVCODEC_AVCODEC_H -DHAVE_LIBAVUTIL_OPT_H -DHAVE_LIBAVUTIL_MEM_H -DHAVE_LIBAVUTIL_AVUTIL_H -DHAVE_LIBAVFORMAT_AVFORMAT_H -DHAVE_LIBAVFILTER_AVFILTER_H -DHAVE_LIBSWRESAMPLE_SWRESAMPLE_H -DOMX -DOMX_SKIP64BIT -ftree-vectorize -DUSE_EXTERNAL_OMX -DTARGET_RASPBERRY_PI -DUSE_EXTERNAL_LIBBCM_HOST
+CFLAGS=-pipe
+CFLAGS+=-mfloat-abi=hard
+CFLAGS+=-mcpu=arm1176jzf-s
+CFLAGS+=-fomit-frame-pointer
+CFLAGS+=-mabi=aapcs-linux
+CFLAGS+=-mtune=arm1176jzf-s
+CFLAGS+=-mfpu=vfp
+CFLAGS+=-Wno-psabi
+CFLAGS+=-mno-apcs-stack-check
+CFLAGS+=-g
+CFLAGS+=-mstructure-size-boundary=32
+CFLAGS+=-mno-sched-prolog
+CFLAGS+=-std=c++0x
+CFLAGS+=-D__STDC_CONSTANT_MACROS
+CFLAGS+=-D__STDC_LIMIT_MACROS
+CFLAGS+=-DTARGET_POSIX
+CFLAGS+=-DTARGET_LINUX
+CFLAGS+=-fPIC
+CFLAGS+=-DPIC
+CFLAGS+=-D_REENTRANT
+CFLAGS+=-D_LARGEFILE64_SOURCE
+CFLAGS+=-D_FILE_OFFSET_BITS=64
+CFLAGS+=-DHAVE_CMAKE_CONFIG
+CFLAGS+=-D__VIDEOCORE4__
+CFLAGS+=-U_FORTIFY_SOURCE
+CFLAGS+=-Wall
+CFLAGS+=-DHAVE_OMXLIB
+CFLAGS+=-DUSE_EXTERNAL_FFMPEG
+CFLAGS+=-DHAVE_LIBAVCODEC_AVCODEC_H
+CFLAGS+=-DHAVE_LIBAVUTIL_OPT_H
+CFLAGS+=-DHAVE_LIBAVUTIL_MEM_H
+CFLAGS+=-DHAVE_LIBAVUTIL_AVUTIL_H
+CFLAGS+=-DHAVE_LIBAVFORMAT_AVFORMAT_H
+CFLAGS+=-DHAVE_LIBAVFILTER_AVFILTER_H
+CFLAGS+=-DHAVE_LIBSWRESAMPLE_SWRESAMPLE_H
+CFLAGS+=-DOMX
+CFLAGS+=-DOMX_SKIP64BIT
+CFLAGS+=-ftree-vectorize
+CFLAGS+=-DUSE_EXTERNAL_OMX
+CFLAGS+=-DTARGET_RASPBERRY_PI
+CFLAGS+=-DUSE_EXTERNAL_LIBBCM_HOST
 
 LDFLAGS=-L$(SDKSTAGE)/opt/vc/lib/
-LDFLAGS+=-L./ -Lffmpeg_compiled/usr/local/lib/ -lc -lbrcmGLESv2 -lbrcmEGL -lbcm_host -lopenmaxil -lfreetype -lz -lasound
+LDFLAGS+=-L./
+LDFLAGS+=-Lffmpeg_compiled/usr/local/lib/
+LDFLAGS+=-lc
+LDFLAGS+=-lbrcmGLESv2
+LDFLAGS+=-lbrcmEGL
+LDFLAGS+=-lbcm_host
+LDFLAGS+=-lopenmaxil
+LDFLAGS+=-lfreetype
+LDFLAGS+=-lz
+LDFLAGS+=-lasound
 
-INCLUDES+=-I./ -Ilinux -Iffmpeg_compiled/usr/local/include/ -I /usr/include/dbus-1.0 -I /usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/freetype2 -isystem$(SDKSTAGE)/opt/vc/include -isystem$(SDKSTAGE)/opt/vc/include/interface/vcos/pthreads
+INCLUDES+=-I./
+INCLUDES+=-Ilinux
+INCLUDES+=-Iffmpeg_compiled/usr/local/include/
+INCLUDES+=-I /usr/include/dbus-1.0
+INCLUDES+=-I /usr/lib/arm-linux-gnueabihf/dbus-1.0/include
+INCLUDES+=-I/usr/include/freetype2
+INCLUDES+=-isystem$(SDKSTAGE)/opt/vc/include
+INCLUDES+=-isystem$(SDKSTAGE)/opt/vc/include/interface/vcos/pthreads
 
 DIST ?= omxplayer-dist
 STRIP ?= strip
 
-SRC=		linux/XMemUtils.cpp \
+SRC=	linux/XMemUtils.cpp \
+		OMXPlayerSync.cpp \
 		linux/OMXAlsa.cpp \
 		utils/log.cpp \
 		DynamicDll.cpp \
