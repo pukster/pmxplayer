@@ -39,6 +39,7 @@ CFLAGS+=-ftree-vectorize
 CFLAGS+=-DUSE_EXTERNAL_OMX
 CFLAGS+=-DTARGET_RASPBERRY_PI
 CFLAGS+=-DUSE_EXTERNAL_LIBBCM_HOST
+#CFLAGS+=-fsanitize=address #Remove for production
 
 LDFLAGS=-L$(SDKSTAGE)/opt/vc/lib/
 LDFLAGS+=-L./

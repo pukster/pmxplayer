@@ -1003,6 +1003,7 @@ int main(int argc, char *argv[])
     }
 
     if (optind >= argc) {
+        //std::cout<<"Too Much "<<optind<<"\n";
         print_usage();
         return 0;
     }
