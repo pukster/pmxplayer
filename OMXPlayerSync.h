@@ -110,14 +110,14 @@ class OMXPlayerSync
       struct sockaddr_in server;
       struct sockaddr_in client;
       socklen_t clientaddrlen;
-      ssize_t bytesreceived;
-      char buff [ BUFFLEN ];
-      char * reply;
+      //ssize_t bytesreceived;
+      //char buff [ BUFFLEN ];
+      //char * reply;
       int updateTicker; //time not reliable, use ticks instead
     
       //additional client info
       // char *hostname;
       struct addrinfo *serverinfo;
-      char *question;
+      //char *question;
 };
 #endif // #ifndef OMXPLAYERSYNCH_H

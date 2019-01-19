@@ -193,6 +193,7 @@ static void FlushStreams(double pts);
 
 void SetSpeed(int iSpeed)
 {
+    //std::cout<<"SetSpeed Enter\n";
     if(!m_av_clock)
         return;
 
@@ -204,6 +205,7 @@ void SetSpeed(int iSpeed)
 
     m_av_clock->OMXSetSpeed(iSpeed);
     m_av_clock->OMXSetSpeed(iSpeed, true, true);
+    std::cout<<iSpeed<<"\n";
 }
 
 static float get_display_aspect_ratio(HDMI_ASPECT_T aspect)

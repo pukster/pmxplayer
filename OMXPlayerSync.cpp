@@ -8,7 +8,7 @@ OMXPlayerSync::OMXPlayerSync( SyncType _syncType, int _numNodes, int _port )
    syncTimeState = ONTRACK;
    numNodes = _numNodes;
    port = _port;
-   reply = strdup ( "0" ); // Can be anything at start
+   //reply = strdup ( "0" ); // Can be anything at start
    updateTicker = 2 * UPDATE_THRESHOLD; // want to force an update on the first try
 }
 
@@ -19,7 +19,7 @@ OMXPlayerSync::OMXPlayerSync( SyncType _syncType, int _port, const string &_serv
    syncTimeState = ONTRACK;
    port = _port;
    serverAddress = _serverAddress;
-   question = strdup ( "1" ); // Can be anything
+   //question = strdup ( "1" ); // Can be anything
    updateTicker = 2 * UPDATE_THRESHOLD; // want to force an update on the first try
 }
 
@@ -88,9 +88,15 @@ float OMXPlayerSync::getJitter ()
 int OMXPlayerSync::syncWithServer ()
 {
    int i;
+   ssize_t bytesreceived;
+   char *question;
+   char reply[10000]=""; // Using pointers caused errors with sprintf below
+   char buff [ BUFFLEN ];
    
    if ( syncType == SYNC_SERVER )
    {
+      //reply = strdup ( "0" ); // Allocate memory
+
       serverTime = stamp;
       
       //First receive the tcp messages
@@ -103,7 +109,7 @@ int OMXPlayerSync::syncWithServer ()
          }
       }
       
-      sprintf ( reply, "%f", serverTime );
+      sprintf ( reply, "%f", serverTime ); // This is where double free occurs
     
       //then rapidly send a message back
       for ( i = 0; i < numNodes && i < MAX_NUM_CLIENT_SOCKETS; i++)
@@ -117,6 +123,8 @@ int OMXPlayerSync::syncWithServer ()
    }
    else
    {
+      question = strdup ( "1" ); // Allocate memory
+
       clientTime = stamp;
       
       if (-1 == send(sockfd, question, (size_t) strlen(question) + 1, 0)) {

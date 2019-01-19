@@ -39,6 +39,10 @@ CFLAGS+=-ftree-vectorize
 CFLAGS+=-DUSE_EXTERNAL_OMX
 CFLAGS+=-DTARGET_RASPBERRY_PI
 CFLAGS+=-DUSE_EXTERNAL_LIBBCM_HOST
+#CFLAGS+=-ggdb #Remove for production
+#CFLAGS+=-Q #Remove for production
+#CFLAGS+=-v #Remove for production
+#CFLAGS+=-da #Remove for production
 #CFLAGS+=-fsanitize=address #Remove for production
 
 LDFLAGS=-L$(SDKSTAGE)/opt/vc/lib/
@@ -52,6 +56,8 @@ LDFLAGS+=-lopenmaxil
 LDFLAGS+=-lfreetype
 LDFLAGS+=-lz
 LDFLAGS+=-lasound
+#LDFLAGS+=-fsanitize=address #Remove for production
+#LDFLAGS+=-static-libasan #Remove for production
 
 INCLUDES+=-I./
 INCLUDES+=-Ilinux
