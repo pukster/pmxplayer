@@ -158,6 +158,7 @@ dist: omxplayer.bin omxplayer.1
 
 install:
 	cp -r $(DIST)/* /
+	cp dbus-tcp-session.conf /usr/share/dbus-1/tcp-session.conf
 
 uninstall:
 	rm -rf /usr/bin/omxplayer
