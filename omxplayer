@@ -43,7 +43,7 @@ if [ -z $NOREFRESH ] || [ "$NOREFRESH" == "0" ]; then
     fi
 fi
 
-DBUS_CMD="dbus-daemon --config-file=/usr/share/dbus-1/tcp-session.conf --fork --print-address 5 --print-pid 6 --session"
+DBUS_CMD="dbus-daemon --config-file=/usr/share/dbus-1/tcp-session.conf --fork --print-address 5 --print-pid 6"
 OMXPLAYER_DBUS_ADDR="/tmp/omxplayerdbus.${USER:-root}"
 OMXPLAYER_DBUS_PID="/tmp/omxplayerdbus.${USER:-root}.pid"
 
