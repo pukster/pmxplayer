@@ -45,6 +45,18 @@ Installing OMXPlayer
 You may want to specify a valid font path inside the `omxplayer` shell script.
 Copy over `omxplayer-dist/*` to the Pi `/`.
 
+## COMMUNICATION WITH pmx-media-server
+
+- You need to mount samba in raspis to share videos.
+eg. sudo mount -t cifs //192.168.0.101/pmxplayer-videos /mnt/pmxplayer-video -o username=pmx
+
+- You need to run pmxplayer to communciate with pmx-media-server.
+eg. /usr/bin/omxplayer /mnt/pmxplayer-video/Bme-XHo-AA4.mp4 -s --loop --no-osd --with-info
+Then port 55501 will be opened for dbus connection.
+It's temporary and we are going to run pmxplayer automatically when raspi is on in the future.
+
+And then you can control(play/pause) video of raspis in your browser.
+
 ## SYNOPSIS
 
 Usage: omxplayer [OPTIONS] [FILE]
